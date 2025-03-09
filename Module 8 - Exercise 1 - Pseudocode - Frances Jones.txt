@@ -1,0 +1,67 @@
+start
+    Declarations
+        InputFile geraldineLS 
+        InputFile geraldLS
+        OutputFile ggLS
+        num geraldineNum
+        string geraldineLName
+        string geraldineAddress
+        num geraldineSqFt
+        num geraldNum
+        string geraldLName
+        string geraldAddress
+        num geraldSqFt
+        string endNum = 999999
+        string bothAtEnd = False
+
+    housekeeping()
+    while bothAtEnd = False
+        mergeFiles()
+    endwhile
+    endOfJob()
+stop
+
+housekeeping()
+    open geraldineLS "GeraldineLandscaping.dat"
+    open geraldLS "GeraldLandscaping.dat"
+    open ggLS "GandGLandscaping.dat"
+    readGeraldine()
+    readGerald()
+    checkEnd()
+return
+
+readGeraldine()
+    input geraldineNum, geraldineLName, geraldineAddress, geraldineSqFt from geraldineLS
+    if eof
+        geraldineNum = endNum
+    endif
+return
+
+readGerald()
+    input geraldNum, geraldLName, geraldAddress, geraldSqFt from geraldLS
+    if eof
+        geraldNum = endNum
+    endif
+return
+
+checkEnd()
+    if geraldineNum = endNum AND geraldNum = endNum
+        bothAtEnd = True
+    endif
+return
+
+mergeFiles()
+    if geraldineNum < geraldNum
+        output geraldineNum, geraldineLName, geraldineAddress, geraldineSqFt to ggls
+        readGeraldine()
+    else
+        output geraldNum, geraldLName, geraldAddress, geraldSqFt
+        readGerald()
+    endif
+return
+
+endOfJob()
+    close geraldineLS
+    close geraldLS
+    close ggLS
+return
